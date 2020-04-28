@@ -1,0 +1,34 @@
+{
+    "presets": [
+        [
+            "next/babel"
+        ]
+    ],
+    "plugins": [
+        [
+            "emotion"
+        ],
+        [
+            "module-resolver",
+            {
+                "root": [
+                    "./src"
+                ],
+                "alias": {
+                    "@components": "./src/components"
+                }
+            }
+        ]
+    ]
+}
+
+// {
+//     "env": {
+//       "production": {
+//         "plugins": ["emotion"]
+//       },
+//       "development": {
+//         "plugins": [["emotion", { "sourceMap": true }]]
+//       }
+//     }
+// }
