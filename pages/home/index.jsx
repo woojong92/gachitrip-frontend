@@ -1,21 +1,33 @@
 import Layout from "../../components/Layout";
 import styled from "@emotion/styled";
 
+const Wrapper = styled.div`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #f7f7f7;
+`;
+
 const Section = styled.div`
   width: 100%;
   height: 47vh;
   display: flex;
   flex-direction: column;
-  /* background-color: red; */
+  background-color: red;
 `;
 
 export default function Home() {
   return (
     <Layout navigation footer>
-      <Section>
+      <Wrapper>      
+        <Section>
         Home
-      </Section>
-      
+        </Section>
+        
+      </Wrapper>
+
     </Layout>
   )
 }

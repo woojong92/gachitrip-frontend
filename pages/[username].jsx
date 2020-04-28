@@ -12,15 +12,14 @@ const Wrapper = styled.div`
     align-items: center;
 `;
 
-
-
 const ProfileNavigationBox = styled.div`
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 50px;
-    min-width: 500px;
+    width: 80%;
+    max-width: 500px;
     justify-content: space-between;
     margin: 4rem;
     /* align-items: center; */
@@ -41,7 +40,6 @@ const ProfileNavigationBtn = styled.div`
 `;
 
 function ProfileNavigation ({children, onClick, isActive}) {
-    
     return (
         <ProfileNavigationBtn onClick={onClick} isActive={isActive}>{children}</ProfileNavigationBtn>
     )

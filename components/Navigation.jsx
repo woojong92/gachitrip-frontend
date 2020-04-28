@@ -6,7 +6,7 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 65px;
+    min-height: 65px;
     border-bottom: 1px solid #e5e5e5;
 `;
 

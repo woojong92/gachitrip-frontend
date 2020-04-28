@@ -1,5 +1,3 @@
-import Layout from "../../components/Layout";
-
 import React, {useState} from "react";
 import styled from "@emotion/styled";
 import { jsx, css } from "@emotion/core";
@@ -44,9 +42,8 @@ const InputBox = styled.input`
         background-color: #ffdb4d;
         cursor: pointer;
         font-weight: bold;
-        
+        /* color: #fa8c16; */
         ${props => !props.disabled && css`
-
             &:hover {
                 background-color: #ffeb99;
             }
@@ -58,11 +55,9 @@ const InputBox = styled.input`
 `;
 
 
-function SignupPage () { 
+function Signin () { 
     const [email, setEmail] = useState('');
-    const [usernaem, setUsername] = useState('');
     const [password, setPassword] =  useState('');
-    const [checkPassword, setCheckPassword] = useState('');
 
     const submitData = async (e) => {
         e.preventDefault();
@@ -70,45 +65,34 @@ function SignupPage () {
     }
 
     return (
-        <Layout>
         <Wrapper>
             <FormBox onSubmit={submitData}>
-                <h1>회원가입</h1>
+                <h1>로그인하기</h1>
                 <InputBox 
                     type="text"
                     onChange={ e => setEmail(e.target.value)}
-                    placeholder="이메일을 입력해 주세요"
+                    placeholder="이메일 주소를 입력해주세요."
                     value={email}
-                />
-                <InputBox 
-                    type="text"
-                    onChange={ e => setUsername(e.target.value)}
-                    placeholder="사용하실 아이디를 입력해 주세요"
-                    value={usernaem}
                 />
                 <InputBox 
                     type="password"
                     onChange={ e => setPassword(e.target.value)}
-                    placeholder="비밀번호를 입력해 주세요"
+                    placeholder="비밀번호를 입력해 주세요."
                     value={password}
-                />
-                <InputBox 
-                    type="password"
-                    onChange={ e => setCheckPassword(e.target.value)}
-                    placeholder="비밀번호를 다시 한번 입력해 주세요"
-                    value={checkPassword}
                 />
 
                 <InputBox 
-                    disabled={!password || !email || !password || !checkPassword}
+                    disabled={!password || !email}
                     type="submit"
-                    value="회원가입하기"
+                    // onChange={ e => setEmail(e.target.value)}
+                    // placeholder="Email Address"
+                    value="로그인하기"
                 />
             </FormBox>
+          
         </Wrapper>
-        </Layout>
     )
 
 }
 
-export default SignupPage;
+export default Signin;

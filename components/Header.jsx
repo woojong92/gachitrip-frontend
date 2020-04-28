@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import styled from "@emotion/styled";
 import Router from "next/router";
+import {SearchOutlined, StarOutlined} from "@ant-design/icons";
 // import { useRouter } from "next/router";
 
 const HeaderBox = styled.div`
@@ -43,6 +44,7 @@ const SignInBtn = styled.a`
 `;
 
 const SignUpBtn = styled.div`
+    box-sizing: border-box;
     font-family: Baloo;
     font-size: 15px;
     color: #111;
@@ -56,7 +58,10 @@ const SignUpBtn = styled.div`
 
 const RightBox = styled.div`
     display: flex;
+    justify-content: center;
+    align-items: center;
 `;
+
 
 const AvatarBox = styled.div`
     width: 32px;
@@ -64,7 +69,22 @@ const AvatarBox = styled.div`
     border: 1px solid #e5e5e5;
     border-radius: 25px;
     background-color: blueviolet;
+    margin: 0 0.5rem;
     cursor: pointer;
+`;
+
+const SearchIcon = styled(SearchOutlined)`
+    box-sizing: border-box;
+    outline: none;
+    font-size: 16px;
+    margin: 0 0.5rem;
+`;
+
+const StarIcon = styled(StarOutlined)`
+    box-sizing: border-box;
+    outline: none;
+    font-size: 16px;
+    margin: 0 0.5rem;
 `;
 
 
@@ -78,11 +98,12 @@ function Header () {
                     <LogoBox>Gachitrip</LogoBox>
                 </Link>
             </div>
-        
-            
             { 
                 false ? (
                     <RightBox>
+                        <Link href="/search">
+                            <SearchIcon />
+                        </Link>
                         <Link href="/signup">
                             <SignUpBtn>회원가입하기</SignUpBtn>
                         </Link>
@@ -93,6 +114,13 @@ function Header () {
                     </RightBox> 
                 ) : (
                     <RightBox>
+ 
+                        <Link href="/search">
+                            <SearchIcon />
+                        </Link>
+                        <Link href="/me/list">
+                            <StarIcon />
+                        </Link>
                         <AvatarBox onClick={() => Router.push('/@username')}/>
                     </RightBox>
                 )

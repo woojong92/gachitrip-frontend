@@ -3,7 +3,8 @@ import styled from "@emotion/styled";
 
 const ProfileBox = styled.div`
     box-sizing: border-box;
-    width: 800px;
+    width: 80%;
+    max-width: 800px;
     height: 200px;
     /* background-color: pink; */
     display: flex;
