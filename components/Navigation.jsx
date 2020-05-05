@@ -21,6 +21,9 @@ const A = styled.a`
     font-size: 20px;
     text-decoration: none;
     cursor: pointer;
+    &:hover {
+        color: #111
+    }
 `;
 
 function Navigation () {

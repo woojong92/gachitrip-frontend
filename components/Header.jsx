@@ -3,8 +3,10 @@ import Link from "next/link";
 import styled from "@emotion/styled";
 import Router from "next/router";
 import {SearchOutlined, StarOutlined} from "@ant-design/icons";
-// import { useRouter } from "next/router";
+import { Menu, Dropdown } from 'antd';
 
+// import { useRouter } from "next/router";
+``
 const HeaderBox = styled.div`
     box-sizing: border-box;
     display: flex;
@@ -29,6 +31,9 @@ const LogoBox = styled.a`
     color: #000;
     margin-right: 20px;
     cursor: pointer;
+    &:hover {
+        color: #000
+    }
 `;
 
 const SignInBtn = styled.a`
@@ -38,6 +43,9 @@ const SignInBtn = styled.a`
     padding: 5px 10px;
     margin: 0 0.5rem;
     cursor: pointer;
+    &:hover {
+        color: #111
+    }
     /* border: 1px solid #222; */
     /* border-radius: 5px; */
     /* background-color: blue; */
@@ -87,6 +95,36 @@ const StarIcon = styled(StarOutlined)`
     margin: 0 0.5rem;
 `;
 
+const menu = (
+    <Menu>
+      <Menu.Item>
+        <div onClick={() => Router.push('/@username')}>
+            My Story
+        </div>
+      </Menu.Item>
+      <Menu.Item>
+        <div onClick={() => Router.push('/write')}>
+            새 글 쓰기
+        </div>
+      </Menu.Item>
+      <Menu.Item>
+        <div onClick={() => Router.push('/draft')}>
+          임시글
+        </div>
+      </Menu.Item>
+      <Menu.Item>
+        <div onClick={() => Router.push('/setting')}>
+          설정
+        </div>
+      </Menu.Item>
+      <Menu.Item>
+        <div onClick={() => console.log("logout")}>
+          로그아웃
+        </div>
+      </Menu.Item>
+    </Menu>
+  );
+
 
 
 function Header () {
@@ -121,7 +159,10 @@ function Header () {
                         <Link href="/me/list">
                             <StarIcon />
                         </Link>
-                        <AvatarBox onClick={() => Router.push('/@username')}/>
+                        {/* <AvatarBox onClick={() => Router.push('/@username')}/> */}
+                        <Dropdown overlay={menu} trigger={['click']}>
+                            <AvatarBox />
+                        </Dropdown>
                     </RightBox>
                 )
             }

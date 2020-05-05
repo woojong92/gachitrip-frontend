@@ -12,7 +12,8 @@ const Wrapper = styled.div`
 
 const Section = styled.div`
   width: 100%;
-  height: 47vh;
+  max-width: 1000px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   background-color: red;

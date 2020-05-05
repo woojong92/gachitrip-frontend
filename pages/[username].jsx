@@ -65,7 +65,17 @@ export default function (props) {
                 </ProfileNavigationBox>
 
                 <div>
-                    {profileNav}
+                    { 
+                        profileNav === "write" ? (
+                            <div>write</div>
+                        ) : profileNav === "picture" ? (
+                            <div> picture </div>
+                        ) :  profileNav === "video" ?(
+                            <div> video </div>
+                        ) : (
+                            <div> not found </div>
+                        )
+                    }
                 </div>
 
            </Wrapper>

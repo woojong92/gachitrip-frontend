@@ -6,10 +6,8 @@ const ProfileBox = styled.div`
     width: 80%;
     max-width: 800px;
     height: 200px;
-    /* background-color: pink; */
     display: flex;
     flex: 1;
-    /* flex-shrink: 1; */
     justify-content: flex-start;
     align-items: center;
     margin: 2rem;
