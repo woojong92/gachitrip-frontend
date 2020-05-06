@@ -1,12 +1,12 @@
 import Layout from "../../components/Layout";
-import Signin from "../../components/Signin";
+import SigninContainer from "../../containers/auth/SigninContainer";
 
 function SignInPage () {
     return (
         <Layout>
-            <Signin/>
+            <SigninContainer/>
         </Layout>
     )
-}
+}                                  
 
 export default SignInPage;

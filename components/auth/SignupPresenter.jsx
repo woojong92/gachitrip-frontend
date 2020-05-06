@@ -36,14 +36,15 @@ const InputBox = styled.input`
     border: 0;
     outline: none;
     background-color: #e5e5e5;
-    
+    font-size: 12px;
 
     &[type='submit'] {
         background-color: #ffdb4d;
         cursor: pointer;
         font-weight: bold;
-        /* color: #fa8c16; */
+        opacity: 0.5;
         ${props => !props.disabled && css`
+            opacity: 1;
             &:hover {
                 background-color: #ffeb99;
             }
@@ -55,44 +56,49 @@ const InputBox = styled.input`
 `;
 
 
-function Signin () { 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] =  useState('');
-
-    const submitData = async (e) => {
-        e.preventDefault();
-        console.log(email, password);
-    }
-
+function SignupPresenter ({form, onChange, onSubmit}) { 
     return (
         <Wrapper>
-            <FormBox onSubmit={submitData}>
-                <h1>로그인하기</h1>
+            <FormBox onSubmit={onSubmit}>
+                <h1>회원가입</h1>
                 <InputBox 
                     type="text"
-                    onChange={ e => setEmail(e.target.value)}
-                    placeholder="이메일 주소를 입력해주세요."
-                    value={email}
+                    name="email"
+                    onChange={onChange}
+                    placeholder="이메일을 입력해 주세요"
+                    value={form.email}
+                />
+                <InputBox 
+                    type="text"
+                    name="username"
+                    onChange={onChange}
+                    placeholder="사용하실 아이디를 입력해 주세요"
+                    value={form.usernaem}
                 />
                 <InputBox 
                     type="password"
-                    onChange={ e => setPassword(e.target.value)}
-                    placeholder="비밀번호를 입력해 주세요."
-                    value={password}
+                    name="password"
+                    onChange={onChange}
+                    placeholder="비밀번호를 입력해 주세요"
+                    value={form.password}
+                />
+                <InputBox 
+                    type="password"
+                    name="passwordConfirm"
+                    onChange={onChange}
+                    placeholder="비밀번호를 다시 한번 입력해 주세요"
+                    value={form.passwordConfirm}
                 />
 
                 <InputBox 
-                    disabled={!password || !email}
+                    disabled={!form.password || !form.email || !form.password || !form.passwordConfirm}
                     type="submit"
-                    // onChange={ e => setEmail(e.target.value)}
-                    // placeholder="Email Address"
-                    value="로그인하기"
+                    value="회원가입하기"
                 />
             </FormBox>
-          
         </Wrapper>
     )
 
 }
 
-export default Signin;
+export default SignupPresenter;
