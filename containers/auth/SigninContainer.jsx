@@ -52,7 +52,7 @@ const SigninContainer = () => {
         }
     }, [auth, authError, dispatch]);
 
-    useEffext(() => {
+    useEffect(() => {
         if(user) {
             Router.replace("/")
         }
