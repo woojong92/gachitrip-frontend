@@ -24,7 +24,7 @@ export default function Layout ({ children, navigation, footer }) {
         <Wrapper>
             <Header />
             {
-                navigation && <Navigation/>
+                // navigation && <Navigation/>
             }
             <LayoutBox>{ children }</LayoutBox>
            {
