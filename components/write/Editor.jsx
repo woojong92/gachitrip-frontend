@@ -49,8 +49,9 @@ const formats = [
 ]
 
 const EditorWrapper = styled.div`
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding: 3rem 1rem 1rem 1rem;
+    /* padding-top: 5rem;
+    padding-bottom: 5rem; */
 `;
 
 const TitleInput = styled.input`
