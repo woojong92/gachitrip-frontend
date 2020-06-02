@@ -49,7 +49,7 @@ const formats = [
 ]
 
 const EditorWrapper = styled.div`
-    padding: 3rem 1rem 1rem 1rem;
+    padding: 1rem;
     /* padding-top: 5rem;
     padding-bottom: 5rem; */
 `;
@@ -89,7 +89,7 @@ export default () => {
                     placeholder={"내용을 작성하세요..."}
                     modules={modules} 
                     formats={formats} 
-                    theme="bubble" 
+                    theme="snow" //"bubble" 
                 />
             </QuillWrapper>
         </EditorWrapper>
