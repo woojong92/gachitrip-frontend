@@ -4,6 +4,7 @@ import Editor from "../../components/write/Editor"
 import TagBox from "../../components/write/TagBox";
 import WriteActionButtons from "../../components/write/WriteActionButtons";
 import { useCallback } from "react";
+import Router from 'next/router'
 
 
 const Wrapper = styled.div`
@@ -32,6 +33,7 @@ export default function WritePage() {
 
   const onCancle = useCallback( e => {
     e.preventDefault();
+    Router.back()
     console.log("onCancle")
   }, []);
 
@@ -44,9 +46,11 @@ export default function WritePage() {
     <Layout>
       <Wrapper> 
         <Section>
+      
           <WriteActionButtons onPublish={onPublish} onCancle={onCancle} onDraft={onDraft}/>
-          <Editor />
           <TagBox />
+          <Editor />
+ 
         </Section> 
        
       </Wrapper>
