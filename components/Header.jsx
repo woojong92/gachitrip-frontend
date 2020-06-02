@@ -167,7 +167,7 @@ const menu = (
 
 
 function Header () {
-    const [logedIn, setLogedIn] = useState(false)
+    const [logedIn, setLogedIn] = useState(true)
     const [toggled, setToggled] = useState(false)
     const handleToggle = () => {
         setToggled(!toggled)

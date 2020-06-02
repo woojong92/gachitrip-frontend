@@ -1,6 +1,10 @@
 import React, {useState, useCallback} from "react";
 import styled from "@emotion/styled";
 
+const TagBoxWrapper = styled.div`
+    padding: 1rem;
+`;
+
 const Tag = styled.div`
     margin-right: 0.5rem;
     color: blue;
@@ -58,8 +62,7 @@ const TagBox = () => {
     }, [input, insertTag]);
 
     return (
-        <div>
-            <h4>태그</h4>
+        <TagBoxWrapper>
             <form onSubmit={onSubmit}>
                 <input 
                     type="text" 
@@ -70,7 +73,7 @@ const TagBox = () => {
                 <button type="submit">추가</button>
             </form>
             <TagList tags={localTags} onRemove={onRemove}/>
-        </div>
+        </TagBoxWrapper>
     )
 }
 
