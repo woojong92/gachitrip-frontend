@@ -1,5 +1,6 @@
 import Layout from "../../components/Layout";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 const Wrapper = styled.div`
     height: 100%;
@@ -174,10 +175,51 @@ const RightSectionBox = styled.div`
   }
 `;
 
+const SubMenuWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 65px;
+    border-bottom: 1px solid #e5e5e5;
+`;
+
+const SubMenuInner = styled.div`
+    box-sizing: border-box;
+    width: 1024px;
+    justify-content: flex-start;
+    display: flex;
+    margin: 1rem;
+    @media (max-width: 768px) {
+        width: 100%;
+        
+    }
+`;
+
+const SubMenuA = styled.a`
+    color: #111;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+        color: #111
+    }
+    margin-right: 1rem;
+`;
+
 export default function Home() {
   return (
     <Layout navigation footer>
-      <Wrapper>      
+          <SubMenuWrapper>
+          <SubMenuInner>
+              <Link href="/"><SubMenuA>Home</SubMenuA></Link>
+              <Link href="/post"><SubMenuA>스토리</SubMenuA></Link>
+              <Link href="/picture"><SubMenuA>사진</SubMenuA></Link>
+              <Link href="/video"><SubMenuA>영상</SubMenuA></Link>
+              <Link href="/question"><SubMenuA>질문과 답변</SubMenuA></Link>
+          </SubMenuInner>
+        </SubMenuWrapper> 
+      <Wrapper>
         <Banner>
           <img src="https://previews.123rf.com/images/mikalaimanyshau/mikalaimanyshau1412/mikalaimanyshau141200015/34925939-%EC%97%AC%ED%96%89-%EB%B0%B0%EB%84%88%EC%9E%85%EB%8B%88%EB%8B%A4-%ED%8F%89%EB%A9%B4-%EB%B2%A1%ED%84%B0-%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8-%EB%A0%88%EC%9D%B4-%EC%85%98%EC%9E%85%EB%8B%88%EB%8B%A4-.jpg" alt=""/>
         </Banner>

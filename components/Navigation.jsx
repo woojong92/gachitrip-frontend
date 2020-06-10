@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "@emotion/styled";
 import Link from "next/link";
 
@@ -11,22 +11,33 @@ const Wrapper = styled.div`
 `;
 
 const NavigationBox = styled.div`
-    width: 1000px;
-    justify-content: space-around;
+    box-sizing: border-box;
+    width: 1024px;
+    justify-content: flex-start;
     display: flex;
+    margin: 1rem;
+    @media (max-width: 768px) {
+        width: 100%;
+        
+    }
 `;
 
 const A = styled.a`
     color: #111;
-    font-size: 20px;
+    font-size: 15px;
+    font-weight: 600;
     text-decoration: none;
     cursor: pointer;
     &:hover {
         color: #111
     }
+    margin-right: 1rem;
 `;
 
-function Navigation () {
+function Navigation ({currentMenu}) {
+    useEffect(() => {
+        console.log('navigation')
+    }, [currentMenu])
     return  (
         <Wrapper>
             <NavigationBox>
