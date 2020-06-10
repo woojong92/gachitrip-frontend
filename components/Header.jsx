@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import Router from "next/router";
 import {SearchOutlined, StarOutlined, AlignRightOutlined} from "@ant-design/icons";
 import { Menu, Dropdown } from 'antd';
+import Navigation from "./Navigation";
 
 // import { useRouter } from "next/router";
 ``
@@ -68,13 +69,20 @@ const NavigationBox = styled.div`
 
 const A = styled.a`
     color: #111;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: 600;
     text-decoration: none;
     padding: 0.5rem;
     cursor: pointer;
     &:hover {
         color: #111
     }
+`;
+
+const LeftBox = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 `;
 
 const RightBox = styled.div`
@@ -134,6 +142,38 @@ const ToggleBox = styled.div`
     border-bottom: 1px solid #e5e5e5;
 `;
 
+const SubMenuWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 65px;
+    border-bottom: 1px solid #e5e5e5;
+`;
+
+const SubMenuInner = styled.div`
+    box-sizing: border-box;
+    width: 1024px;
+    justify-content: flex-start;
+    display: flex;
+    margin: 1rem;
+    @media (max-width: 768px) {
+        width: 100%;
+        
+    }
+`;
+
+const SubMenuA = styled.a`
+    color: #111;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+        color: #111
+    }
+    margin-right: 1rem;
+`;
+
 const menu = (
     <Menu>
       <Menu.Item>
@@ -164,6 +204,8 @@ const menu = (
     </Menu>
   );
 
+ 
+
 
 
 function Header () {
@@ -172,22 +214,24 @@ function Header () {
     const handleToggle = () => {
         setToggled(!toggled)
     }
-
+    const [currentMenu, setCurrentMenu] = useState("community")
+    
     return (
         <>
         <HeaderBox>
         <Nav>
-            <div>
+            <LeftBox>
                 <Link href="/">
                     <LogoBox>Gachitrip</LogoBox>
                 </Link>
-            </div>
-            <NavigationBox>
-                <Link href="/"><A>홈</A></Link>
-                <Link href="/community"><A>커뮤니티</A></Link>
-                <Link href="/together"><A>같이여행</A></Link>
-                <Link href="/contents"><A>콘텐츠</A></Link>
-            </NavigationBox>
+
+                <NavigationBox>
+                    <Link href="/" onClick={() => setCurrentMenu("community")}><A>커뮤니티</A></Link>
+                    <Link href="/together" ><A onClick={() => setCurrentMenu("together")}>같이여행</A></Link>
+                    <Link href="/contents" onClick={() => setCurrentMenu("contents")}><A>스토어</A></Link>
+                </NavigationBox>
+            </LeftBox>
+
             { 
                 logedIn ? (
                     <>
@@ -224,38 +268,61 @@ function Header () {
                 )
             }
         </Nav>
+        
         </HeaderBox>
         {
             toggled ? (
                 logedIn ? 
-                <ToggleBox>
-                <Link href="/"><A>홈</A></Link>
-                <Link href="/community"><A>커뮤니티</A></Link>
-                <Link href="/together"><A>같이여행</A></Link>
-                <Link href="/contents"><A>콘텐츠</A></Link>
-                <hr color="#e5e5e5" width="100%" size="1px"/>
-                
-                <Link href="/@username"><A>My Story</A></Link>
-                <Link href="/write"><A>새 글 쓰기</A></Link>
-                <Link href="/draft"><A>임시글</A></Link>
-                <Link href="/setting"><A>설정</A></Link>
+                    <ToggleBox>
+                        <Link href="/"><A>홈</A></Link>
+                        <Link href="/community"><A>커뮤니티</A></Link>
+                        <Link href="/together"><A>같이여행</A></Link>
+                        <Link href="/contents"><A>콘텐츠</A></Link>
+                        <hr color="#e5e5e5" width="100%" size="1px"/>
+                        
+                        <Link href="/@username"><A>My Story</A></Link>
+                        <Link href="/write"><A>새 글 쓰기</A></Link>
+                        <Link href="/draft"><A>임시글</A></Link>
+                        <Link href="/setting"><A>설정</A></Link>
 
-                <hr color="#e5e5e5" width="100%" size="1px"/>
-                <Link href="/logout"><A>로그아웃하기</A></Link>
+                        <hr color="#e5e5e5" width="100%" size="1px"/>
+                        <Link href="/logout"><A>로그아웃하기</A></Link>
 
-                </ToggleBox> : 
-                <ToggleBox>
-                <Link href="/"><A>홈</A></Link>
-                <Link href="/community"><A>커뮤니티</A></Link>
-                <Link href="/together"><A>같이여행</A></Link>
-                <Link href="/contents"><A>콘텐츠</A></Link>     
-                <hr color="#e5e5e5" width="100%" size="1px"/>
-                <Link href="/signup"><A>회원가입하기</A></Link>
-                <Link href="/signin"><A>로그인하기</A></Link>           
-                </ToggleBox>
+                    </ToggleBox> : 
+                    <ToggleBox>
+                        <Link href="/"><A>홈</A></Link>
+                        <Link href="/community"><A>커뮤니티</A></Link>
+                        <Link href="/together"><A>같이여행</A></Link>
+                        <Link href="/contents"><A>콘텐츠</A></Link>     
+                        <hr color="#e5e5e5" width="100%" size="1px"/>
+                        <Link href="/signup"><A>회원가입하기</A></Link>
+                        <Link href="/signin"><A>로그인하기</A></Link>           
+                    </ToggleBox>
                 ) : 
                 null
         }
+        {/* <SubMenuWrapper>
+                {
+                    currentMenu === "community" ? (
+                        <SubMenuInner>
+                            <Link href="/"><SubMenuA>Home</SubMenuA></Link>
+                            <Link href="/community"><SubMenuA>스토리</SubMenuA></Link>
+                            <Link href="/together"><SubMenuA>사진</SubMenuA></Link>
+                            <Link href="/contents"><SubMenuA>영상</SubMenuA></Link>
+                            <Link href="/contents"><SubMenuA>질문과 답변</SubMenuA></Link>
+                        </SubMenuInner>
+                    ) : (
+                        <SubMenuInner>
+                            <Link href="/"><SubMenuA>같이여행</SubMenuA></Link>
+                            <Link href="/community"><SubMenuA>스토리</SubMenuA></Link>
+                            <Link href="/together"><SubMenuA>사진</SubMenuA></Link>
+                            <Link href="/contents"><SubMenuA>영상</SubMenuA></Link>
+                            <Link href="/contents"><SubMenuA>질문과 답변</SubMenuA></Link>
+                        </SubMenuInner>
+                    )
+                }
+        </SubMenuWrapper> */}
+        {/* <Navigation currentMenu={currentMenu}/> */}
         </>
     )
 }
