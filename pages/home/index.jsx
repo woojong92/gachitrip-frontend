@@ -1,6 +1,10 @@
 import Layout from "../../components/Layout";
 import styled from "@emotion/styled";
 import Link from "next/link";
+import Router from "next/router";
+import TodayStory from "../../components/home/TodayStory";
+import TodayPicture from "../../components/home/TodayPicture";
+import TodayVideo from "../../components/home/TodayVideo";
 
 const Wrapper = styled.div`
     height: 100%;
@@ -15,21 +19,22 @@ const Wrapper = styled.div`
 `;
 
 const Banner = styled.div`
-  width: 100%;
+ 
   max-width: 1024px;
+  width: 100%;
   max-height: 250px;
-  min-height: 250px;
-  height: 100%;
+  /* min-height: 250px; */
+  height: auto;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   background-color: teal;
   border-radius: 15px;
   cursor: pointer;
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     max-height: 180px;
     min-height: 180px;
-  }
+  } */
   margin-bottom: 1rem;
 
   img {
@@ -39,6 +44,35 @@ const Banner = styled.div`
   }
 `;
 
+const Section = styled.section`
+  margin: 2rem 0;
+  max-width: 1024px;
+  width: 100%;
+`;
+
+const SubTitleWrapper = styled.div`
+  width: 100%;
+  max-width: 1024px;
+  height: 50px;
+  /* background-color: red; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+`;
+
+const SubTitle = styled.div`
+  font-size: 25px;
+  font-weight: 900;
+  color: #111111;
+`;
+
+const More = styled.a`
+  color: blue;
+`;
+
+
 const Cards = styled.div`
   max-width: 1024px;
   display: grid;
@@ -46,8 +80,8 @@ const Cards = styled.div`
   grid-gap: 30px;
   align-items: center;
 
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(4, 1fr);
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   @media (max-width: 768px) {
@@ -210,115 +244,48 @@ const SubMenuA = styled.a`
 export default function Home() {
   return (
     <Layout navigation footer>
-          <SubMenuWrapper>
+        <SubMenuWrapper>
           <SubMenuInner>
               <Link href="/"><SubMenuA>Home</SubMenuA></Link>
-              <Link href="/post"><SubMenuA>스토리</SubMenuA></Link>
+              <Link href="/story"><SubMenuA>스토리</SubMenuA></Link>
               <Link href="/picture"><SubMenuA>사진</SubMenuA></Link>
               <Link href="/video"><SubMenuA>영상</SubMenuA></Link>
               <Link href="/question"><SubMenuA>질문과 답변</SubMenuA></Link>
           </SubMenuInner>
         </SubMenuWrapper> 
       <Wrapper>
+        
         <Banner>
           <img src="https://previews.123rf.com/images/mikalaimanyshau/mikalaimanyshau1412/mikalaimanyshau141200015/34925939-%EC%97%AC%ED%96%89-%EB%B0%B0%EB%84%88%EC%9E%85%EB%8B%88%EB%8B%A4-%ED%8F%89%EB%A9%B4-%EB%B2%A1%ED%84%B0-%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8-%EB%A0%88%EC%9D%B4-%EC%85%98%EC%9E%85%EB%8B%88%EB%8B%A4-.jpg" alt=""/>
         </Banner>
+      
 
-        <SectionBox>
+        <Section>
+          <SubTitleWrapper>
+            <SubTitle>오늘의 스토리</SubTitle>
+            <More onClick={() => Router.push('/story')}>더보기 > </More>
+          </SubTitleWrapper>
+          
+          <TodayStory />
+        </Section>
+        
+        <Section>
+          <SubTitleWrapper>
+            <SubTitle>오늘의 비디오</SubTitle>
+            <More onClick={() => Router.push('/video')}>더보기</More>
+          </SubTitleWrapper>
 
-          <PostBox className="post__section">
-            <Post>
-              <div className="post__main">
-                <div>
-                  <div className="post__title">Post Title</div>
-                  <div className="post__createdAt">작성일: 2020. 05. 26</div>
-                  <p className="post__content">asdfjklkjsdflkajsdflkjsaldfkjalskdfjlaksdfjlkajfdlkajsdf</p>
-                </div>
+          <TodayVideo></TodayVideo>  
+        </Section>
 
-                <div className="post__sub">
-                  <div className="post__sub_right">
-                    <div>avatar</div>
-                    <div>by woody</div>
-                  </div>
+        <Section>
+          <SubTitleWrapper>
+            <SubTitle>오늘의 사진</SubTitle>
+            <More onClick={() => Router.push('/picture')}>더보기</More>
+          </SubTitleWrapper>
 
-                  <div className="post__sub_left">
-                    <div>likes</div>
-                    <div>댓글</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="post__thumnail">
-                <img src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile25.uf.tistory.com%2Fimage%2F264179365948F4B52CF164" alt=""/>
-              </div>
-            </Post>
-            <Post>
-              <div className="post__main">
-                <div>
-                  <div className="post__title">Post Title</div>
-                  <div className="post__createdAt">작성일: 2020. 05. 26</div>
-                  <p className="post__content">asdfjklkjsdflkajsdflkjsaldfkjalskdfjlaksdfjlkajfdlkajsdf</p>
-                </div>
-
-                <div className="post__sub">
-                  <div className="post__sub_right">
-                    <div>avatar</div>
-                    <div>by woody</div>
-                  </div>
-
-                  <div className="post__sub_left">
-                    <div>likes</div>
-                    <div>댓글</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="post__thumnail">
-                <img src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile25.uf.tistory.com%2Fimage%2F264179365948F4B52CF164" alt=""/>
-              </div>
-            </Post>
-  
-          </PostBox>
-
-          <RightSectionBox>
-
-            asdfasdf
-          </RightSectionBox>
-
-        </SectionBox>
-
-        <Cards>
-          <Card>
-            <img src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile25.uf.tistory.com%2Fimage%2F264179365948F4B52CF164" alt=""/>
-            <div>
-               <div className="card__title">Card Title</div> 
-               <p>hello, world. this is card contents</p>
-            </div>
-          </Card>
-
-          <Card>
-            <img src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile25.uf.tistory.com%2Fimage%2F264179365948F4B52CF164" alt=""/>
-            <div>
-               <div className="card__title">Card Title</div> 
-               <p>hello, world. this is card contents</p>
-            </div>
-          </Card>         
-          <Card>
-            <img src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile25.uf.tistory.com%2Fimage%2F264179365948F4B52CF164" alt=""/>
-            <div>
-               <div className="card__title">Card Title</div> 
-               <p>hello, world. this is card contents</p>
-            </div>
-          </Card>
-          <Card>
-            <img src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile25.uf.tistory.com%2Fimage%2F264179365948F4B52CF164" alt=""/>
-            <div>
-               <div className="card__title">Card Title</div> 
-               <p>hello, world. this is card contents</p>
-            </div>
-          </Card>
-        </Cards>
-
+          <TodayPicture></TodayPicture>
+        </Section>
 
       </Wrapper>
 
