@@ -31,6 +31,7 @@ const TodayPictureItem = styled.div`
     min-height: 185px;
     border: 0;
     border-radius: 15px;
+    transition: .2s;
   }
   .TodayPictureItem__image:hover {
       background-size: 110% 110%;

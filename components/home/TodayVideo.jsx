@@ -3,7 +3,8 @@ import styled from '@emotion/styled';
 import { CaretRightOutlined } from "@ant-design/icons";
 
 const TodayVideoBox = styled.div`
-    max-width: 1024px;
+    /* max-width: 1024px; */
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 15px;
@@ -39,7 +40,7 @@ const TodayVideoItem = styled.div`
         .video-icon {
             font-size: 50px;
             color: rgba(247, 249, 249, 0.8);
-            transition: .5s;
+            transition: .2s;
         }
     }
 
@@ -65,12 +66,10 @@ const TodayVideoItem = styled.div`
         cursor: pointer;
 
         .video-icon {
-            font-size: 70px;
+            font-size: 55px;
             color: rgba(247, 249, 249, 1);
         }
     }
-
-
 `;
 
 

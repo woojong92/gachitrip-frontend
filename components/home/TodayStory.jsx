@@ -27,6 +27,7 @@ const TodayStoryItem = styled.div`
     font-size: 20px;
     font-weight: 800;
     padding: 0.5rem;
+    color: #565656;
   }
 
   .TodayStoryItem__image {
@@ -37,6 +38,7 @@ const TodayStoryItem = styled.div`
     min-height: 185px;
     border: 0;
     border-radius: 15px;
+    transition: 0.2s;
   }
   .TodayStoryItem__image:hover {
       background-size: 110% 110%;
