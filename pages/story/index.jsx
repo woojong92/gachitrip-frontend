@@ -1,6 +1,7 @@
 import Layout from "../../components/Layout";
 import styled from "@emotion/styled";
 import Link from "next/link";
+import StoryCards from "../../components/home/StoryCards";
 
 
 const SubMenuWrapper = styled.div`
@@ -35,6 +36,24 @@ const SubMenuA = styled.a`
     margin-right: 1rem;
 `;
 
+const Wrapper = styled.div`
+    height: 100%;
+    display: flex;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 1rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #f7f7f7;
+`;
+
+const Section = styled.section`
+  margin: 2rem 0;
+  max-width: 1024px;
+  width: 100%;
+`;
+
 function Story () {
     return (
         <Layout navigation footer>
@@ -47,9 +66,14 @@ function Story () {
                     <Link href="/question"><SubMenuA>질문과 답변</SubMenuA></Link>
                 </SubMenuInner>
             </SubMenuWrapper> 
-            <div>
-                story
-            </div>
+
+            <Wrapper>
+                <Section>
+                  <StoryCards>
+                      
+                  </StoryCards>
+                </Section>
+            </Wrapper>
 
         </Layout>
     )
