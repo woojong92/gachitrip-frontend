@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { HeartFilled, CommentOutlined } from '@ant-design/icons';
 
-const StoryCardsBox = styled.div`
+const PictureCardsBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -20,13 +20,13 @@ const StoryCardsBox = styled.div`
     } */
 
     @media (min-width: 40rem ) { 
-        .StroyCardItem {
+        .PictureCardItem {
             width: 50%;
         }
     }
 
     @media (min-width: 56rem) {
-        .StroyCardItem {
+        .PictureCardItem {
             width: 33.3333%;
             /* padding-left: 0;
             padding-right: 0; */
@@ -34,22 +34,32 @@ const StoryCardsBox = styled.div`
     }
 `;
 
-const StroyCardItem = styled.div`
+const PictureCardItem = styled.div`
     display: flex;
     flex-direction: column;
     overflow: hidden;
     padding: 0.5rem;
+    /* margin-right: rem; */
     margin-bottom: 1rem;
     cursor: pointer;
+    /* background-color: white; */
 
     /* margin: 1rem; */
     
     /* background-color: red; */
     /* height: 380px; */
+    .PictureCardItem__inner {
+        background-color: white;
+        border-radius: 15px;
+        margin: 0.3rem;
+        padding: 0.3rem;
+        border: 1px solid #e5e5e5;
+    }
 
-    .StoryCardItem__image {
-        height: auto;
+    .PictureCardItem__image {
+        
         max-width: 100%;
+        height: auto;
         vertical-align: middle;
 
         /* background-image: url("https://t1.daumcdn.net/cfile/tistory/998E90395B713E560C");
@@ -58,7 +68,7 @@ const StroyCardItem = styled.div`
         border-radius: 10px;
     }
 
-    .StoryCardItem__content {
+    .PictureCardItem__content {
         width: 100%;
         /* height: 160px; */
         /* background-color: blue; */
@@ -70,9 +80,17 @@ const StroyCardItem = styled.div`
             font-weight: 800;
             transition: 0.2s;
         }
+
+
+        p {
+            /* display: inline-block; */
+            white-space: normal;
+            color: #242424;
+            /* overflow: hidden; */
+        }
     }
 
-    .StoryCardItem__subinfo {
+    .PictureCardItem__subinfo {
         width: 100%;
         height: 40px;
         /* background-color: pink; */
@@ -82,17 +100,17 @@ const StroyCardItem = styled.div`
         padding: 0.5rem;
     }
 
-    .StoryCardItem__subinfo .userinfo {
+    .PictureCardItem__subinfo .userinfo {
         display: flex;
         align-items: center;
     }
 
-    .StoryCardItem__subinfo .icons {
+    .PictureCardItem__subinfo .icons {
         display: flex;
         align-items: center;
     }
 
-    .StoryCardItem__subinfo .userinfo .avatar {
+    .PictureCardItem__subinfo .userinfo .avatar {
         width: 25px;
         height: 25px;
         background-color: teal;
@@ -100,14 +118,14 @@ const StroyCardItem = styled.div`
         margin-right: 10px;
     }
 
-    .StoryCardItem__subinfo .icons .likes {
+    .PictureCardItem__subinfo .icons .likes {
         margin-right: 10px;
         .likes-icon {
             margin-right: 4px;
         }
     }
 
-    .StoryCardItem__subinfo .icons .comments {
+    .PictureCardItem__subinfo .icons .comments {
         /* margin-right: 10px; */
         .comments-icon {
             margin-right: 4px;
@@ -115,52 +133,66 @@ const StroyCardItem = styled.div`
     }
 
     &:hover {
-        /* transform:scale(1.05); 
-        transition: transform .2s; */
+        @media screen and (min-width: 56rem) {
+            transform:scale(1.02); 
+            transition: transform .2s;
+        }
         
-        .StoryCardItem__content h4 {
+        
+        .PictureCardItem__content h4 {
             color: #202124;
+        }
+
+        .PictureCardItem__content p {
+            color: #7E7E7E;
         }
     }
 `;
 
 const dummyTodayStory = [
     {
-        img: "https://picsum.photos/500/300/?image=1",
+        img: "https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/159271498097205883.jpeg?gif=1&w=640&h=640&c=c&q=80&webp=1",
         title: "무더운 여름 ㅎㅎㅎㅎ",
+        describe: "asdf asd fasㅋ ㅋㅋㅋ ㅋㅋ ㅋㅋㅋ ㅋㅋ ㅋㅋ ㅋㅋ ㅋㅋㅋ ㅋㅋ ㅋㅋㅋㅋ ㅋㅋㅋ ㅋdf asdㅎ ㅎㅎㅎ ㅎㅎ ㅎㅎ ㅎㅎㅎ ㅎㅎ ㅎㅎf asdf asd fa sd fas dfas dfas df",
         author: "author1"
     },
     {
-        img: "https://picsum.photos/500/300/?image=14",
+        img: "https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/159271498097205883.jpeg?gif=1&w=640&h=640&c=c&q=80&webp=1",
         title: "경기도 여주, 가자 캠핑!!",
+        describe: "asdf asd fasd fasd fasdf asdf as dfasd fas d fas ㅋㅋㅋㅋㅋ ㅋㅋㅋ ㅋ ㅋㅋdf",
         author: "author2"
     },
     {
-        img: "https://picsum.photos/500/300/?image=9",
+        img: "https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/159271498097205883.jpeg?gif=1&w=640&h=640&c=c&q=80&webp=1",
         title: "여자혼자, 배낭여행 가기",
+        describe: "asdf asdfasdf asdf asdfas dfasdfas dfas dfa sdfㅇ ㅁㄴ ㄹㅁㄴ ㅇ ㄹㅁㄴ ㅇㄹ",
         author: "author3"
     },
     {
-        img: "https://picsum.photos/500/300/?image=17",
+        img: "https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/159279085178454582.jpeg?gif=1&w=640&h=640&c=c&q=80&webp=1",
         title: "회사 때려치구고",
+        describe: "asd fj a lskdfjl aks민ㅇ  ㅁㅇ너리 ㅏㅁ넝리 ㅏ먼ㅇ리마 ㅓㄴㅇ 리ㅏ먼 ㅇ리ㅏ 먼; 리ㅏ  먼이 라ㅓㅁ 니ㅏㅇ러민 ㅇㄹ",
         author: "author4"
     },
     
 ]
 
 
-function StoryCards() {
+function PictureCards() {
     return (
-        <StoryCardsBox>
+        <PictureCardsBox>
            
                 {
                     dummyTodayStory.map( data => (
-                        <StroyCardItem className="StroyCardItem">
-                        <img src={data.img} className="StoryCardItem__image"></img>
-                        <div className="StoryCardItem__content">
-                            <h4>{data.title}</h4>
+                        <PictureCardItem className="PictureCardItem">
+                            <div className="PictureCardItem__inner">
+
+                        <img src={data.img} className="PictureCardItem__image"></img>
+                        <div className="PictureCardItem__content">
+                            {/* <h4>{data.title}</h4> */}
+                            <p>{data.describe}</p>
                         </div>
-                        <div className="StoryCardItem__subinfo">
+                        <div className="PictureCardItem__subinfo">
                             <div className="userinfo">
                                 <div className="avatar">
         
@@ -180,11 +212,13 @@ function StoryCards() {
                                 </div>
                             </div>
                         </div>
-                    </StroyCardItem>
+
+                        </div>
+                    </PictureCardItem>
                     ))
                 }
-        </StoryCardsBox>
+        </PictureCardsBox>
     )
 }
 
-export default StoryCards;
+export default PictureCards;
